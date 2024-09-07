@@ -10,4 +10,15 @@
   grid-template-columns: repeat(auto-fit, 413px);
   justify-content: center;
   gap: 40px 20px;
+  border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
+  padding-bottom: 20px;
+}
+
+@media screen and (max-width: 627px) {
+  .cards__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    column-gap: 20px;
+  }
 }

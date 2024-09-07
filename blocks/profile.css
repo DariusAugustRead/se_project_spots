@@ -1,7 +1,7 @@
 .profile {
   display: flex;
   margin-top: 34px;
-  padding: 0;
+  padding-bottom: 20px;
   border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
 }
 
@@ -46,15 +46,21 @@
   margin: auto 0 20px;
   font-weight: 500;
   font-size: 16px;
-  color: rgba(33, 33, 33, 0.7);
+  color: rgba(33, 33, 33);
+  opacity: 70%;
   gap: 8px;
   background: transparent;
   border: none;
 }
 
+.profile__edit-btn:hover {
+  color: rgba(33, 33, 33);
+  opacity: 100%;
+}
+
 .profile__add-btn {
   display: flex;
-  margin: 0 0 20px auto;
+  margin-left: auto;
   font-weight: 500;
   font-size: 16px;
   background: rgba(33, 33, 33, 1);
@@ -69,7 +75,15 @@
   text-wrap: nowrap;
 }
 
-@media screen and (min-width: 320px) and (max-width: 627px) {
+.profile__add-btn_plus {
+  padding: 2px 0;
+}
+
+.profile__add-btn:hover {
+  opacity: 80%;
+}
+
+@media screen and (max-width: 627px) {
   .profile {
     flex-direction: column;
     max-width: 288px;

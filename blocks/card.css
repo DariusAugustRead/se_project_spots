@@ -37,3 +37,23 @@
   margin: 0;
   align-self: center;
 }
+
+.card__like-btn:hover {
+  opacity: 100%;
+}
+
+@media screen and (max-width: 627px) {
+  .card {
+    height: 318px;
+    width: 288px;
+  }
+
+  .card__image {
+    height: 288px;
+    width: 288px;
+  }
+
+  .card__content {
+    width: 288px;
+  }
+}
