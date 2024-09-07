@@ -14,9 +14,6 @@
   display: flex;
   justify-content: space-between;
   margin: 12px 0 0;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }
 
 .card__title {
@@ -24,6 +21,9 @@
   font-weight: 500;
   font-size: 20px;
   line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .card__like-btn {
@@ -54,6 +54,10 @@
   }
 
   .card__content {
-    width: 288px;
+    max-width: 288px;
+  }
+
+  .card__title {
+    max-width: 213px;
   }
 }
