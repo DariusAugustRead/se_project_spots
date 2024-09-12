@@ -14,4 +14,7 @@ Figma
 
 [Images Folder with software and technique examples] (./images/demo/)
 
-https://github.com/DariusAugustRead/se_project_spots/
+https://dariusaugustread.github.io/se_project_spots/
+
+Video Link:
+https://drive.google.com/file/d/164WSGMDlg6KlmoiLykxMYy9kcfAdizrU/view?usp=sharing
