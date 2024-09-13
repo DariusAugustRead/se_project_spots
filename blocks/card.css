@@ -44,16 +44,16 @@
 
 @media screen and (max-width: 627px) {
   .card {
-    width: 288px;
+    width: 280px;
   }
 
   .card__image {
-    height: 288px;
+    height: 280px;
     width: 100%;
   }
 
   .card__content {
-    max-width: 288px;
+    max-width: 280px;
   }
 
   .card__title {

@@ -87,10 +87,14 @@
 @media screen and (max-width: 627px) {
   .profile {
     flex-direction: column;
-    max-width: 288px;
+    max-width: 280px;
     align-items: center;
     text-align: center;
-    margin: 20px auto 12px;
+    margin: 20px auto 0;
+  }
+
+  .profile__column {
+    margin: 0;
   }
 
   .profile__avatar {
@@ -102,12 +106,12 @@
   .profile__name {
     margin-bottom: 6px;
     font-size: 20px;
-    max-width: 288px;
+    max-width: 280px;
   }
 
   .profile__description {
     margin-bottom: 32px;
-    max-width: 288px;
+    max-width: 280px;
   }
 
   .profile__edit-btn {
@@ -118,7 +122,7 @@
   .profile__add-btn {
     margin-left: 0;
     align-self: center;
-    width: 288px;
+    width: 280px;
     padding: 18px 97.5px;
   }
 }
