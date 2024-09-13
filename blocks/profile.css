@@ -52,6 +52,7 @@
   gap: 8px;
   background: transparent;
   border: none;
+  cursor: pointer;
 }
 
 .profile__edit-btn:hover {
@@ -73,6 +74,7 @@
   padding: 18px 24px 18px 24px;
   gap: 8px;
   text-wrap: nowrap;
+  cursor: pointer;
 }
 
 .profile__add-btn_plus {
