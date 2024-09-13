@@ -75,11 +75,9 @@
   text-wrap: nowrap;
 }
 
-.profile__add-btn::before {
-  content: "";
-  width: 14px;
-  height: 14px;
-  background-image: url(../images/pencil.svg);
+.profile__add-btn_plus {
+  width: 16px;
+  height: 16px;
 }
 
 .profile__add-btn:hover {
