@@ -51,7 +51,7 @@
   .card__image {
     height: 280px;
     width: 100%;
-    border-radius: 8%;
+    border-radius: 8px;
   }
 
   .card__content {
