@@ -80,6 +80,8 @@
 .profile__add-btn_plus {
   width: 16px;
   height: 16px;
+  margin: 0;
+  padding: 0;
 }
 
 .profile__add-btn:hover {
@@ -126,5 +128,9 @@
     align-self: center;
     width: 280px;
     padding: 18px 97.5px;
+  }
+
+  .profile__add-btn_plus {
+    margin: 0;
   }
 }
