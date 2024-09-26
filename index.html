@@ -10,8 +10,8 @@
     <link rel="shortcut icon" href="./images/favicon.ico" />
     <title>Spots</title>
   </head>
-  <body>
-    <div class="page">
+  <body class="page">
+    <div class="page__content">
       <header class="header">
         <img src="./images/logo.svg" alt="spots logo" class="header__logo" />
       </header>
@@ -117,7 +117,7 @@
       <footer class="footer">
         <p class="footer__copyright">2024 &copy; Spots</p>
       </footer>
-      <div class="modal modal__opened">
+      <div class="modal" id="edit-modal">
         <div class="modal__container">
           <button type="submit" class="modal__close-btn"></button>
           <h2 class="modal__title">Edit profile</h2>
@@ -128,7 +128,7 @@
                 id="name"
                 type="text"
                 class="modal__input"
-                placeholder="Janee LaShay Linden"
+                placeholder="Type your name"
               />
             </label>
             <label for="description" class="modal__label">
@@ -137,7 +137,7 @@
                 id="description"
                 type="text"
                 class="modal__input"
-                placeholder="get lovelier everytime I see her"
+                placeholder="Describe yourself"
               />
             </label>
             <button type="submit" class="modal__submit-btn">Save</button>
