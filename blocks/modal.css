@@ -59,7 +59,6 @@
   flex-direction: column;
   gap: 8px;
   margin-bottom: 32px;
-  padding: 16px auto 16px 12px;
   font-size: 16px;
   font-weight: 500;
   line-height: 1.1;
@@ -74,7 +73,7 @@
   font-size: 20px;
   font-weight: 500;
   line-height: 1;
-  color: rgba(33, 33, 33, 0.3);
+  color: rgba(33, 33, 33, 1);
   gap: 10px;
 }
 
