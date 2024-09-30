@@ -11,7 +11,7 @@ VS Code
 
 Figma
 -Responsive Design planning
--User interactivity
+-Visual User interactivity styles
 
 [Images Folder with software and technique examples] (./images/demo/)
 
