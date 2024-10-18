@@ -81,13 +81,22 @@
   border-color: rgba(33, 33, 33, 1);
 }
 
-.modal__submit-btn {
-  width: 156px;
+.modal__btn {
+  font-size: 16px;
+  line-height: 1;
+  color: rgba(252, 245, 229, 1);
+  width: 100%;
+  max-width: 156px;
   padding: 18px 0;
   border: none;
   border-radius: 8px;
-  color: #fff;
-  background-color: rgba(33, 33, 33, 1);
+  background: rgba(33, 33, 33, 1);
+  transition: background 0.3s;
+}
+
+.modal__btn:hover {
+  background: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
 }
 
 @media screen and (max-width: 627px) {
@@ -114,7 +123,7 @@
     font-size: 16px;
   }
 
-  .modal__submit-btn {
+  .modal__btn {
     padding: 18px 118px;
     width: 100%;
     align-self: center;

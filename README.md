@@ -1,13 +1,14 @@
 # Spots
 
-This is one of the intermediate stages of the "Spots" social media web applications.
-When it is complete, users will be able to add and remove photos to their profile (and maybe even more in the future). As of now, users can update/edit their profile name and/or description.
+I am now building the more features of the "Spots" social media web applications.
+The user can now add a new card, with an image and a name/caption. When submitted the new card is added to the top of the card list. Next, other users will be able to like ❤️ (and maybe even more in the future).
 
 ## Tech Stack (Software and techniques used)
 
 VS Code
 -HTML 5
 -CSS 3
+-Javascript
 
 Figma
 -Responsive Design planning
