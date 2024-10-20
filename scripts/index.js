@@ -48,10 +48,21 @@ function getCardElement(data) {
 
   const cardCaptionEl = cardElement.querySelector(".card__title");
   const cardImageEl = cardElement.querySelector(".card__image");
+  const cardLikeBtn = cardElement.querySelector(".card__like-btn");
+  const cardTrashBtn = cardElement.querySelector(".card__trash-btn");
 
   cardCaptionEl.textContent = data.name;
   cardImageEl.src = data.link;
   cardImageEl.alt = data.alt;
+
+  cardLikeBtn.addEventListener("click", () => {
+    cardLikeBtn.classList.toggle("card__like-btn_liked");
+  });
+
+  cardTrashBtn.addEventListener("click", () => {
+    cardElement.remove();
+    cardTrashBtn.remove();
+  });
 
   return cardElement;
 }

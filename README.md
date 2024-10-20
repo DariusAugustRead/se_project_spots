@@ -1,7 +1,12 @@
 # Spots
 
-I am now building the more features of the "Spots" social media web applications.
-The user can now add a new card, with an image and a name/caption. When submitted the new card is added to the top of the card list. Next, other users will be able to like ❤️ (and maybe even more in the future).
+I am building the "Spots" social media web applications.
+
+The default profile's avatar image remain the same(for now) but their description can be editted.
+
+The user can also add new cards, with an image, from an URL, and a name/caption text. When submitted the new card is added to the top of the card list.
+
+The user can even like ❤️ and delete existing cards.
 
 ## Tech Stack (Software and techniques used)
 
