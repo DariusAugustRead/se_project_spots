@@ -37,7 +37,7 @@ const profileDescription = document.querySelector(".profile__description");
 // Form elements
 const editModal = document.querySelector("#edit-modal");
 const editForm = document.forms["edit-profile-form"];
-const editModalCloseBtn = editModal.querySelector("#modal-close-btn");
+const closeBtns = document.querySelectorAll("#modal-close-btn");
 const nameInput = editModal.querySelector("#profile-name-input");
 const descriptionInput = editModal.querySelector("#profile-description-input");
 
@@ -45,22 +45,19 @@ const descriptionInput = editModal.querySelector("#profile-description-input");
 const cardsList = document.querySelector(".cards__list");
 const cardTemplate = document.querySelector("#card-template");
 
+//Preview modal elements
+const previewModal = document.querySelector("#preview-modal");
+const previewModalImageEl = previewModal.querySelector(".modal__image");
+const previewModalCaption = previewModal.querySelector(".modal__caption");
+
 function getCardElement(data) {
   const cardElement = cardTemplate.content
     .querySelector(".card")
     .cloneNode(true);
-
   const cardCaptionEl = cardElement.querySelector(".card__title");
   const cardImageEl = cardElement.querySelector(".card__image");
   const cardLikeBtn = cardElement.querySelector(".card__like-btn");
   const cardTrashBtn = cardElement.querySelector(".card__trash-btn");
-
-  const previewModal = document.querySelector("#preview-modal");
-  const previewCloseModal = previewModal.querySelector(
-    ".modal__close-btn_preview"
-  );
-  const previewModalImageEl = previewModal.querySelector(".modal__image");
-  const previewModalCaption = previewModal.querySelector(".modal__caption");
 
   cardCaptionEl.textContent = data.name;
   cardImageEl.src = data.link;
@@ -75,10 +72,6 @@ function getCardElement(data) {
     previewModalImageEl.src = data.link;
     previewModalCaption.textContent = data.name;
     previewModalCaption.alt = data.name;
-  });
-
-  previewCloseModal.addEventListener("click", () => {
-    closeModal(previewModal);
   });
 
   cardTrashBtn.addEventListener("click", () => {
@@ -98,12 +91,16 @@ function closeModal(modal) {
   modal.classList.remove("modal_opened");
 }
 
+closeBtns.forEach((button) => {
+  const modal = button.closest(".modal");
+  button.addEventListener("click", () => closeModal(modal));
+});
+
 // For Edit Profile Modal
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
-  closeModal(editModal);
 }
 
 profileEditButton.addEventListener("click", () => {
@@ -112,15 +109,7 @@ profileEditButton.addEventListener("click", () => {
   openModal(editModal);
 });
 
-editModalCloseBtn.addEventListener("click", () => {
-  closeModal(editModal);
-});
 editForm.addEventListener("submit", handleEditFormSubmit);
-
-// for (let i = 0; i < initialCards.length; i++) {
-//   const cardElement = getCardElement(initialCards[i]);
-//   cardsList.prepend(cardElement);
-// }
 
 initialCards.forEach((card) => {
   const cardElement = getCardElement(card);
@@ -130,7 +119,6 @@ initialCards.forEach((card) => {
 // New Post Modal elements
 const newPostButton = document.querySelector(".profile__add-btn");
 const newPostModal = document.querySelector("#add-card-modal");
-const newPostCloseButton = newPostModal.querySelector(".modal__close-btn");
 const newPostForm = document.forms["add-card-form"];
 
 const newPostLinkInput = newPostModal.querySelector("#add-card-link-input");
@@ -143,10 +131,6 @@ newPostButton.addEventListener("click", () => {
   openModal(newPostModal);
 });
 
-newPostCloseButton.addEventListener("click", () => {
-  closeModal(newPostModal);
-});
-editForm.addEventListener("submit", handleEditFormSubmit);
 newPostForm.addEventListener("submit", handleNewFormSubmit);
 
 function handleNewFormSubmit(evt) {
@@ -158,5 +142,6 @@ function handleNewFormSubmit(evt) {
   const cardEl = getCardElement(inputValues);
   cardsList.prepend(cardEl);
 
-  closeModal(newPostModal);
+  newPostCaptionInput.value = "";
+  newPostLinkInput.value = "";
 }
