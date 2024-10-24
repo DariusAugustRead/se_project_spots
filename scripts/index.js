@@ -29,6 +29,8 @@ const initialCards = [
   },
 ];
 
+const modal = document.querySelectorAll(".modal");
+
 // Profile elements
 const profileEditButton = document.querySelector(".profile__edit-btn");
 const profileName = document.querySelector(".profile__name");
@@ -37,7 +39,7 @@ const profileDescription = document.querySelector(".profile__description");
 // Form elements
 const editModal = document.querySelector("#edit-modal");
 const editForm = document.forms["edit-profile-form"];
-const closeBtns = document.querySelectorAll("#modal-close-btn");
+const closeBtns = document.querySelectorAll(".modal__close-btn");
 const submitBtns = document.querySelectorAll(".modal__btn");
 const nameInput = editModal.querySelector("#profile-name-input");
 const descriptionInput = editModal.querySelector("#profile-description-input");
@@ -90,6 +92,12 @@ function openModal(modal) {
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+  console.log("closeModal called with:", modal);
+  if (modal) {
+    modal.classList.remove("modal_opened");
+  } else {
+    console.error("Modal is undefined in closeModal");
+  }
 }
 
 closeBtns.forEach((button) => {
