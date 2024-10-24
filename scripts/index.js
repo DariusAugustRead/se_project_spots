@@ -115,7 +115,7 @@ function handleEditFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
-  closeModal(modal);
+  closeModal(editModal);
 }
 
 profileEditButton.addEventListener("click", () => {
@@ -159,5 +159,5 @@ function handleNewFormSubmit(evt) {
 
   newPostCaptionInput.value = "";
   newPostLinkInput.value = "";
-  closeModal(modal);
+  closeModal(previewModal);
 }
