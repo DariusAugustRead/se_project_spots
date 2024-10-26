@@ -92,20 +92,9 @@ function openModal(modal) {
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  console.log("closeModal called with:", modal);
-  if (modal) {
-    modal.classList.remove("modal_opened");
-  } else {
-    console.error("Modal is undefined in closeModal");
-  }
 }
 
 closeBtns.forEach((button) => {
-  const modal = button.closest(".modal");
-  button.addEventListener("click", () => closeModal(modal));
-});
-
-submitBtns.forEach((button) => {
   const modal = button.closest(".modal");
   button.addEventListener("click", () => closeModal(modal));
 });
@@ -159,5 +148,5 @@ function handleNewFormSubmit(evt) {
 
   newPostCaptionInput.value = "";
   newPostLinkInput.value = "";
-  closeModal(previewModal);
+  closeModal(newPostModal);
 }
