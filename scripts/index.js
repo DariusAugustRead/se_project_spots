@@ -29,8 +29,6 @@ const initialCards = [
   },
 ];
 
-const modal = document.querySelectorAll(".modal");
-
 // Profile elements
 const profileEditButton = document.querySelector(".profile__edit-btn");
 const profileName = document.querySelector(".profile__name");
