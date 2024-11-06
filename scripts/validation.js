@@ -1,13 +1,26 @@
 // Error Messages
 
 const showInputError = (formElement, inputElement, errorMsg) => {
-  const errorMsgElement = document.querySelector(`#${inputElement.id}-error`);
+  const errorMsgElement = formElement.querySelector(
+    `#${inputElement.id}-error`
+  );
   errorMsgElement.textContent = errorMsg;
+  inputElement.classList.add("modal__input_error_type");
+};
+
+const hideInputError = (formElement, inputElement) => {
+  const errorMsgElement = formElement.querySelector(
+    `#${inputElement.id}-error`
+  );
+  errorMsgElement.textContent = "";
+  inputElement.classList.remove("modal__input_error_type");
 };
 
 const checkInputValidity = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
     showInputError(formElement, inputElement, inputElement.validationMessage);
+  } else {
+    hideInputError(formElement, inputElement);
   }
 };
 
