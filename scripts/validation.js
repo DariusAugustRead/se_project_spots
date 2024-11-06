@@ -24,17 +24,37 @@ const checkInputValidity = (formElement, inputElement) => {
   }
 };
 
+// Arrays?
 const setEventListeners = (formElement) => {
   const inputList = Array.from(formElement.querySelectorAll(".modal__input"));
   const buttonElement = formElement.querySelector(".modal__btn");
 
-  // toggleButtonState(inputList, buttonElement);
+  toggleButtonState(inputList, buttonElement);
 
   inputList.forEach((inputElement) => {
     inputElement.addEventListener("input", function () {
       checkInputValidity(formElement, inputElement);
-      // toggleButtonState(inputList, buttonElement);
+      toggleButtonState(inputList, buttonElement);
     });
+  });
+};
+
+const toggleButtonState = (inputList, buttonElement) => {
+  console.log(hasInvalidInput(inputList));
+  if (hasInvalidInput(inputList)) {
+    buttonElement.disabled = true;
+    buttonElement.classList.add("modal__btn_disabled");
+  } else {
+    buttonElement.disabled = false;
+    buttonElement.classList.remove("modal__btn_disabled");
+  }
+};
+
+// Validation
+
+const hasInvalidInput = (inputList) => {
+  return inputList.some((input) => {
+    return !input.validity.valid;
   });
 };
 
