@@ -42,12 +42,16 @@ const setEventListeners = (formElement) => {
 const toggleButtonState = (inputList, buttonElement) => {
   console.log(hasInvalidInput(inputList));
   if (hasInvalidInput(inputList)) {
-    buttonElement.disabled = true;
-    buttonElement.classList.add("modal__btn_disabled");
+    disableButton(buttonElement);
   } else {
     buttonElement.disabled = false;
     buttonElement.classList.remove("modal__btn_disabled");
   }
+};
+
+const disableButton = (buttonElement) => {
+  buttonElement.disabled = true;
+  buttonElement.classList.add("modal__btn_disabled");
 };
 
 // Validation

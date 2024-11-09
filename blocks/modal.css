@@ -109,6 +109,10 @@
   border: 1px solid rgba(255, 0, 0, 0.6);
 }
 
+.modal__input_error_type:hover {
+  border: 1px solid rgba(255, 0, 0, 0.6);
+}
+
 .modal__btn_disabled {
   opacity: 50%;
 }
