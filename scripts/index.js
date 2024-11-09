@@ -108,6 +108,8 @@ function handleEditFormSubmit(evt) {
 profileEditButton.addEventListener("click", () => {
   nameInput.value = profileName.textContent;
   descriptionInput.value = profileDescription.textContent;
+  //OPTIONAL
+  resetValidation(editForm, [nameInput, descriptionInput]);
   openModal(editModal);
 });
 

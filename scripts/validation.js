@@ -56,6 +56,12 @@ const disableButton = (buttonElement) => {
 
 // Validation
 
+const resetValidation = (formElement, inputList) => {
+  inputList.forEach((input) => {
+    hideInputError(formElement, input);
+  });
+};
+
 const hasInvalidInput = (inputList) => {
   return inputList.some((input) => {
     return !input.validity.valid;
