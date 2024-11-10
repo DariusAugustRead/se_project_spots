@@ -1,6 +1,3 @@
-// I KNOW THAT THIS WON'T BE APPROVED
-// BUT i DON'T KNOW HOW TO FIX THE PROBLEM
-
 const settings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
@@ -28,11 +25,16 @@ const hideInputError = (formElement, inputElement, config) => {
   inputElement.classList.remove(config.inputErrorClass);
 };
 
-const checkInputValidity = (formElement, inputElement) => {
+const checkInputValidity = (formElement, inputElement, config) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(
+      formElement,
+      inputElement,
+      inputElement.validationMessage,
+      config
+    );
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, config);
   }
 };
 
@@ -54,7 +56,6 @@ const setEventListeners = (formElement, config) => {
 };
 
 const toggleButtonState = (inputList, buttonElement, config) => {
-  console.log(hasInvalidInput(inputList));
   if (hasInvalidInput(inputList)) {
     disableButton(buttonElement, config);
   } else {
@@ -71,8 +72,8 @@ const disableButton = (buttonElement, config) => {
 // Validation
 
 const resetValidation = (formElement, inputList) => {
-  inputList.forEach((input) => {
-    hideInputError(formElement, input);
+  inputList.forEach((input, config) => {
+    hideInputError(formElement, input, config);
   });
 };
 
