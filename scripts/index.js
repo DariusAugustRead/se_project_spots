@@ -146,6 +146,6 @@ function handleNewFormSubmit(evt) {
   const cardEl = getCardElement(inputValues);
   cardsList.prepend(cardEl);
   evt.target.reset();
-  submitBtn.forEach((button) => disableButton(button));
+  submitBtn.forEach((button) => disableButton(button, settings));
   closeModal(newPostModal);
 }
