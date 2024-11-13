@@ -35,6 +35,7 @@ const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 
 // Form elements
+const Modals = document.querySelectorAll(".modal");
 const editModal = document.querySelector("#edit-modal");
 const editForm = document.forms["edit-profile-form"];
 const closeBtns = document.querySelectorAll(".modal__close-btn");
@@ -97,6 +98,16 @@ closeBtns.forEach((button) => {
   button.addEventListener("click", () => closeModal(modal));
 });
 
+window.onclick = function (evt) {
+  if (evt.target == editModal) {
+    closeModal(editModal);
+  } else if (evt.target == previewModal) {
+    closeModal(previewModal);
+  } else if (evt.target == newPostModal) {
+    closeModal(newPostModal);
+  }
+};
+
 // For Edit Profile Modal
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
@@ -109,7 +120,7 @@ profileEditButton.addEventListener("click", () => {
   nameInput.value = profileName.textContent;
   descriptionInput.value = profileDescription.textContent;
   //OPTIONAL
-  resetValidation(editForm, [nameInput, descriptionInput]);
+  resetValidation(editForm, [nameInput, descriptionInput], settings);
   openModal(editModal);
 });
 
