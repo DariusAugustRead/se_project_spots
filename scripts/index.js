@@ -111,14 +111,8 @@ window.onclick = function (evt) {
 
 document.addEventListener("keydown", (evt) => {
   if (evt.key === "Escape") {
-    closeModal(editModal);
-    console.log("closeEditModal");
-  } else if (evt.key === "Escape") {
-    closeModal(previewModal);
-    console.log("closePreviewModal");
-  } else if (evt.key === "Escape") {
-    closeModal(newPostModal);
-    console.log("closeNewPostModal");
+    const modalOpened = document.querySelector(".modal_opened");
+    closeModal(modalOpened);
   }
 });
 
