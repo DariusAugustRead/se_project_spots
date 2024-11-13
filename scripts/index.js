@@ -69,7 +69,8 @@ function getCardElement(data) {
     cardLikeBtn.classList.toggle("card__like-btn_liked");
   });
 
-  cardImageEl.addEventListener("click", () => {
+  cardImageEl.addEventListener("click", (evt) => {
+    previewModal.addEventListener("keydown", evt);
     openModal(previewModal);
     previewModalImageEl.src = data.link;
     previewModalCaption.textContent = data.name;
@@ -108,6 +109,19 @@ window.onclick = function (evt) {
   }
 };
 
+document.addEventListener("keydown", (evt) => {
+  if (evt.key === "Escape") {
+    closeModal(editModal);
+    console.log("closeEditModal");
+  } else if (evt.key === "Escape") {
+    closeModal(previewModal);
+    console.log("closePreviewModal");
+  } else if (evt.key === "Escape") {
+    closeModal(newPostModal);
+    console.log("closeNewPostModal");
+  }
+});
+
 // For Edit Profile Modal
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
@@ -116,11 +130,12 @@ function handleEditFormSubmit(evt) {
   closeModal(editModal);
 }
 
-profileEditButton.addEventListener("click", () => {
+profileEditButton.addEventListener("click", (evt) => {
   nameInput.value = profileName.textContent;
   descriptionInput.value = profileDescription.textContent;
   //OPTIONAL
   resetValidation(editForm, [nameInput, descriptionInput], settings);
+  editModal.addEventListener("keydown", evt);
   openModal(editModal);
 });
 
@@ -142,7 +157,8 @@ const newPostCaptionInput = newPostModal.querySelector(
 );
 
 // For New Post Modal functions
-newPostButton.addEventListener("click", () => {
+newPostButton.addEventListener("click", (evt) => {
+  newPostModal.addEventListener("keydown", evt);
   openModal(newPostModal);
 });
 
