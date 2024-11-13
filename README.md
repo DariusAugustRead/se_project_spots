@@ -8,6 +8,8 @@ The user can also add new cards, with an image, from an URL, and a name/caption 
 
 The user can even like ❤️ and delete existing cards.
 
+When editting an existing card, adding a new card or viewing an existing cards preview, the modal can now be closed using the ecsape key or clicking outside of the window.
+
 ## Tech Stack (Software and techniques used)
 
 VS Code
