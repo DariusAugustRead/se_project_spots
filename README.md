@@ -25,5 +25,5 @@ Figma
 
 https://dariusaugustread.github.io/se_project_spots/
 
-Video Link:
+Video Link (Outdated):
 https://drive.google.com/file/d/164WSGMDlg6KlmoiLykxMYy9kcfAdizrU/view?usp=sharing

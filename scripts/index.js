@@ -105,12 +105,15 @@ window.onclick = function (evt) {
   if (evt.target == editModal) {
     closeModal(editModal);
     document.removeEventListener("keydown", evt);
+    window.onclick = null;
   } else if (evt.target == previewModal) {
     closeModal(previewModal);
     document.removeEventListener("keydown", evt);
+    window.onclick = null;
   } else if (evt.target == newPostModal) {
     closeModal(newPostModal);
     document.removeEventListener("keydown", evt);
+    window.onclick = null;
   }
 };
 
