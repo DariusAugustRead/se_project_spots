@@ -39,7 +39,7 @@ const modals = document.querySelectorAll(".modal");
 const editModal = document.querySelector("#edit-modal");
 const editForm = document.forms["edit-profile-form"];
 const closeBtns = document.querySelectorAll(".modal__close-btn");
-const newPostSubmitBtn = document.querySelector(".modal__btn_new");
+const newPostSubmitBtn = document.querySelector("#new-card-submit-btn");
 const nameInput = editModal.querySelector("#profile-name-input");
 const descriptionInput = editModal.querySelector("#profile-description-input");
 
