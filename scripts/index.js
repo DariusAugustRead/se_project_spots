@@ -104,12 +104,21 @@ closeBtns.forEach((button) => {
 window.onclick = function (evt) {
   if (evt.target == editModal) {
     closeModal(editModal);
+    handleClick(evt);
   } else if (evt.target == previewModal) {
     closeModal(previewModal);
+    handleClick(evt);
   } else if (evt.target == newPostModal) {
     closeModal(newPostModal);
+    handleClick(evt);
   }
 };
+
+function handleClick(evt) {
+  window.removeEventListener("click", handleClick);
+}
+
+window.addEventListener("click", handleClick);
 
 function closeWithEscape(evt) {
   if (evt.key === "Escape") {
