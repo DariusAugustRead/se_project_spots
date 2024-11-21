@@ -100,29 +100,20 @@ closeBtns.forEach((button) => {
   button.addEventListener("click", () => closeModal(modal));
 });
 
-// window.onclick = function (evt) {
-//   if (evt.target == editModal) {
-//     closeModal(editModal);
-//     handleClick(evt);
-//   } else if (evt.target == previewModal) {
-//     closeModal(previewModal);
-//     handleClick(evt);
-//   } else if (evt.target == newPostModal) {
-//     closeModal(newPostModal);
-//     handleClick(evt);
-//   }
-// };
-
-function handleClick(evt) {
-  window.removeEventListener("click", handleClick);
-}
-
-window.addEventListener("click", handleClick);
-
 function closeWithEscape(evt) {
   if (evt.key === "Escape") {
     const modalOpened = document.querySelector(".modal_opened");
     closeModal(modalOpened);
+  }
+}
+
+modals.forEach((modal) => {
+  modal.addEventListener("mousedown", handlePopupClose);
+});
+
+function handlePopupClose(evt) {
+  if (evt.target.classList.contains("modal_opened")) {
+    closeModal(evt.currentTarget);
   }
 }
 
@@ -177,14 +168,4 @@ function handleNewFormSubmit(evt) {
   evt.target.reset();
   disableButton(newPostSubmitBtn, settings);
   closeModal(newPostModal);
-}
-
-modals.forEach((modal) => {
-  modal.addEventListener("mousedown", handlePopupClose);
-});
-
-function handlePopupClose(evt) {
-  if (evt.target.classList.contains("modal_opened")) {
-    closeModal(evt.currentTarget);
-  }
 }
