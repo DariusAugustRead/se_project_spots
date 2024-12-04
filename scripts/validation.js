@@ -91,3 +91,5 @@ const enableValidation = (config) => {
 };
 
 enableValidation(settings);
+
+console.log(inputElement);
