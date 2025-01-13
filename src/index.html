@@ -6,19 +6,24 @@
     <meta name="author" content="Stephen Smith" />
     <meta name="description" content="?" />
     <meta name="keywords" content="TripleTen, Spots, ?" />
-    <link rel="stylesheet" href="./pages/index.css" />
+
     <link rel="shortcut icon" href="./images/favicon.ico" />
     <title>Spots</title>
   </head>
   <body class="page">
     <div class="page__content">
       <header class="header">
-        <img src="./images/logo.svg" alt="spots logo" class="header__logo" />
+        <img
+          src="<%=require('./images/logo.svg')%>"
+          alt="spots logo"
+          class="header__logo"
+        />
       </header>
       <main class="content">
         <section class="profile page__section">
           <img
-            src="./images/avatar.jpg"
+            src="<%=require('./images/avatar.jpg')%>"
+            id="example-avatar"
             alt="example avatar image"
             class="profile__avatar"
           />
@@ -26,13 +31,16 @@
             <h1 class="profile__name">Bessie Coleman</h1>
             <p class="profile__description">Civil Aviator</p>
             <button type="button" class="profile__edit-btn">
-              <img src="./images/pencil.svg" alt="pencil icon" />Edit Profile
+              <img
+                src="<%=require('./images/pencil.svg')%>"
+                alt="pencil icon"
+              />Edit Profile
             </button>
           </div>
           <button type="button" class="profile__add-btn">
             <img
               class="profile__add-plus"
-              src="./images/plus.svg"
+              src="<%=require('./images/plus.svg')%>"
               alt="plus icon"
             />New Post
           </button>
@@ -41,7 +49,11 @@
           <ul class="cards__list">
             <template id="card-template">
               <li class="card">
-                <img src="./images/trash.svg" alt="" class="card__trash-btn" />
+                <img
+                  src="<%=require('./images/trash.svg')%>"
+                  alt="card trash button"
+                  class="card__trash-btn"
+                />
                 <img src="" alt="" class="card__image" />
                 <div class="card__content">
                   <h2 class="card__title"></h2>
@@ -160,7 +172,5 @@
         <p class="modal__caption"></p>
       </div>
     </div>
-    <script defer src="./scripts/index.js"></script>
-    <script defer src="./scripts/validation.js"></script>
   </body>
 </html>
