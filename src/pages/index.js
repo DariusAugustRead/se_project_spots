@@ -16,13 +16,18 @@ const api = new Api({
   },
 });
 
-api.getInitialCards().then((cards) => {
-  console.log(cards);
-  cards.forEach((card) => {
-    const cardElement = getCardElement(card);
-    cardsList.prepend(cardElement);
+api
+  .getInitialCards()
+  .then((cards) => {
+    console.log(cards);
+    cards.forEach((card) => {
+      const cardElement = getCardElement(card);
+      cardsList.prepend(cardElement);
+    });
+  })
+  .catch((err) => {
+    console.error(err);
   });
-});
 
 // Profile elements
 const profileEditButton = document.querySelector(".profile__edit-btn");
