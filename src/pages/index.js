@@ -126,6 +126,14 @@ function handlePopupClose(evt) {
 // For Edit Profile Modal
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
+  api
+    .editUserInfo({ name: nameInput.value, about: descriptionInput.value })
+    .then((data) => {
+      console.log(data);
+      return data.value;
+    })
+    .catch(console.error);
+
   profileName.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
   closeModal(editModal);
