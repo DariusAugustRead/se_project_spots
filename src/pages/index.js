@@ -21,12 +21,24 @@ api.getAppInfo().then(([cards]) => {
     const cardElement = getCardElement(card);
     cardsList.prepend(cardElement);
   });
+
+  api
+    .getUserInfo()
+    .then((res) => {
+      profileName.textContent = res.name;
+      profileDescription.textContent = res.about;
+      profileAvatar.src = res.avatar;
+    })
+    .catch((err) => {
+      console.error(err);
+    });
 });
 
 // Profile elements
 const profileEditButton = document.querySelector(".profile__edit-btn");
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
+const profileAvatar = document.querySelector(".profile__avatar");
 
 // Form elements
 const modals = document.querySelectorAll(".modal");
