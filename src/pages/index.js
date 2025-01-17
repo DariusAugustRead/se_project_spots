@@ -40,6 +40,14 @@ const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 const profileAvatar = document.querySelector(".profile__avatar");
 
+// Avatar elements
+const avatarModal = document.querySelector("#avatar-modal");
+const avatarModalBtn = avatarModal.querySelector(".profile__avatar-container");
+const avatarForm = avatarModal.querySelector("#edit-avatar-form");
+const avatarInput = avatarModal.querySelector("#profile-avatar-input");
+const avatarSubmitBtn = avatarModal.querySelector("#avatar-submit-btn");
+const avatarCloseBtn = avatarModal.querySelector("#avatar-modal-close-btn");
+
 // Form elements
 const modals = document.querySelectorAll(".modal");
 const editModal = document.querySelector("#edit-modal");
@@ -164,6 +172,10 @@ newPostButton.addEventListener("click", (evt) => {
 });
 
 newPostForm.addEventListener("submit", handleNewFormSubmit);
+
+avatarModalBtn.addEventListener("click", (evt) => {
+  openModal(avatarModal);
+});
 
 function handleNewFormSubmit(evt) {
   evt.preventDefault();
