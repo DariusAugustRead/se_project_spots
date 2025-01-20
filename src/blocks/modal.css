@@ -193,7 +193,9 @@
   .modal__btn {
     padding: 18px 118px;
     width: 100%;
+    display: flex;
     align-self: center;
+    justify-content: center;
   }
 
   .modal__content_preview-image {

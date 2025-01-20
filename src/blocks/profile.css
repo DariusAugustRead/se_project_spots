@@ -38,7 +38,7 @@
 }
 
 .profile__avatar-container:hover .profile__avatar-btn {
-  cursor: url(../images/hand-icon.svg);
+  cursor: url("../images/hand-icon.svg"), pointer;
   visibility: visible;
 }
 

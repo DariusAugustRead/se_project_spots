@@ -42,11 +42,11 @@ const profileAvatar = document.querySelector(".profile__avatar");
 
 // Avatar elements
 const avatarModal = document.querySelector("#avatar-modal");
-const avatarModalBtn = avatarModal.querySelector(".profile__avatar-container");
-const avatarForm = avatarModal.querySelector("#edit-avatar-form");
-const avatarInput = avatarModal.querySelector("#profile-avatar-input");
-const avatarSubmitBtn = avatarModal.querySelector("#avatar-submit-btn");
-const avatarCloseBtn = avatarModal.querySelector("#avatar-modal-close-btn");
+const avatarModalBtn = document.querySelector(".profile__avatar-btn");
+const avatarForm = document.querySelector("#edit-avatar-form");
+const avatarInput = document.querySelector("#profile-avatar-input");
+const avatarSubmitBtn = document.querySelector("#avatar-submit-btn");
+const avatarCloseBtn = document.querySelector("#avatar-modal-close-btn");
 
 // Form elements
 const modals = document.querySelectorAll(".modal");
@@ -159,7 +159,7 @@ editForm.addEventListener("submit", handleEditFormSubmit);
 // New Post Modal elements
 const newPostButton = document.querySelector(".profile__add-btn");
 const newPostModal = document.querySelector("#add-card-modal");
-const newPostForm = document.forms["add-card-form"];
+const newPostForm = document.querySelector("#add-card-form");
 
 const newPostLinkInput = newPostModal.querySelector("#add-card-link-input");
 const newPostCaptionInput = newPostModal.querySelector(
@@ -177,6 +177,8 @@ avatarModalBtn.addEventListener("click", (evt) => {
   openModal(avatarModal);
 });
 
+avatarForm.addEventListener("submit", handleAvatarSubmit);
+
 function handleNewFormSubmit(evt) {
   evt.preventDefault();
   const inputValues = {
@@ -188,6 +190,19 @@ function handleNewFormSubmit(evt) {
   evt.target.reset();
   disableButton(newPostSubmitBtn, settings);
   closeModal(newPostModal);
+}
+
+function handleAvatarSubmit(evt) {
+  evt.preventDefault();
+  api
+    .editAvatarInfo(avatarInput.value)
+    .then((data) => {
+      // console.log(data.avatar);
+      // console.log(profileAvatar);
+      profileAvatar.src = data.avatar;
+      closeModal(avatarModal);
+    })
+    .catch(console.error);
 }
 
 enableValidation(settings);
