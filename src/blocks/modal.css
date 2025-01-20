@@ -66,11 +66,26 @@
   cursor: pointer;
 }
 
+.modal__close-btn_delete {
+  background: transparent url(../images/close_btn_light.svg);
+  right: -52px;
+  top: 0;
+  opacity: 50%;
+}
+
 .modal__title {
   max-width: 630px;
   padding: 4px 0;
   margin: 0 0 32px;
   font-size: 32px;
+  font-weight: 500;
+}
+
+.modal__title_delete {
+  max-width: 590px;
+  padding: 4px 0;
+  margin: 0 0 32px;
+  font-size: 24px;
   font-weight: 500;
 }
 
@@ -124,6 +139,7 @@
 
 .modal__btn {
   font-size: 16px;
+  font-weight: 500;
   line-height: 1;
   color: rgba(252, 245, 229, 1);
   width: 156px;
@@ -136,7 +152,38 @@
 
 .modal__btn:hover {
   background: rgba(0, 0, 0, 0.8);
-  cursor: pointer;
+  cursor: url("../images/hand-icon.svg"), pointer;
+}
+
+.modal__btn.modal__btn_btns {
+  margin: 0px 149px;
+  width: 332px;
+  display: flex;
+  column-gap: 20px;
+  padding: 0;
+  background: transparent;
+}
+
+.modal__btn_delete {
+  background: rgba(255, 101, 101, 1);
+  color: rgba(33, 33, 33, 1);
+}
+
+.modal__btn_delete:hover {
+  background: rgba(255, 51, 51, 1);
+}
+
+.modal__btn_cancel {
+  background-color: white;
+  border-color: rgba(33, 33, 33, 1);
+  border-style: solid;
+  border-width: 1px;
+  color: rgba(33, 33, 33, 1);
+}
+
+.modal__btn_cancel:hover {
+  background-color: rgba(33, 33, 33, 1);
+  color: white;
 }
 
 .modal__content_preview-image {

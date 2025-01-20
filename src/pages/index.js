@@ -45,8 +45,6 @@ const avatarModal = document.querySelector("#avatar-modal");
 const avatarModalBtn = document.querySelector(".profile__avatar-btn");
 const avatarForm = document.querySelector("#edit-avatar-form");
 const avatarInput = document.querySelector("#profile-avatar-input");
-const avatarSubmitBtn = document.querySelector("#avatar-submit-btn");
-const avatarCloseBtn = document.querySelector("#avatar-modal-close-btn");
 
 // Form elements
 const modals = document.querySelectorAll(".modal");
@@ -60,6 +58,11 @@ const descriptionInput = editModal.querySelector("#profile-description-input");
 //Card related elements
 const cardsList = document.querySelector(".cards__list");
 const cardTemplate = document.querySelector("#card-template");
+
+// Delete form elements
+const deleteModal = document.querySelector("#delete-modal");
+const confirmCardDelete = deleteModal.querySelector(".modal__btn_delete");
+const cancelCardDelete = deleteModal.querySelector(".modal__btn_cancel");
 
 //Preview modal elements
 const previewModal = document.querySelector("#preview-modal");
@@ -91,8 +94,9 @@ function getCardElement(data) {
   });
 
   cardTrashBtn.addEventListener("click", () => {
-    cardElement.remove();
-    cardTrashBtn.remove();
+    // cardElement.remove();
+    // cardTrashBtn.remove();
+    openModal(deleteModal);
   });
 
   return cardElement;
@@ -173,12 +177,6 @@ newPostButton.addEventListener("click", (evt) => {
 
 newPostForm.addEventListener("submit", handleNewFormSubmit);
 
-avatarModalBtn.addEventListener("click", (evt) => {
-  openModal(avatarModal);
-});
-
-avatarForm.addEventListener("submit", handleAvatarSubmit);
-
 function handleNewFormSubmit(evt) {
   evt.preventDefault();
   const inputValues = {
@@ -192,17 +190,27 @@ function handleNewFormSubmit(evt) {
   closeModal(newPostModal);
 }
 
+// For Avatar Modal functions
+avatarModalBtn.addEventListener("click", (evt) => {
+  openModal(avatarModal);
+});
+
+avatarForm.addEventListener("submit", handleAvatarSubmit);
+
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
   api
     .editAvatarInfo(avatarInput.value)
     .then((data) => {
-      // console.log(data.avatar);
-      // console.log(profileAvatar);
       profileAvatar.src = data.avatar;
       closeModal(avatarModal);
     })
     .catch(console.error);
 }
+
+confirmCardDelete.addEventListener("click", (evt) => {
+  evt.preventDefault;
+  closeModal(deleteModal);
+});
 
 enableValidation(settings);
