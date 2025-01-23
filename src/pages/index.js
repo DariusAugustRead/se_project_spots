@@ -4,6 +4,7 @@ import {
   enableValidation,
   settings,
   resetValidation,
+  disableButton,
 } from "../scripts/validation.js";
 
 import Api from "../utils/Api.js";
@@ -59,8 +60,11 @@ const descriptionInput = editModal.querySelector("#profile-description-input");
 const cardsList = document.querySelector(".cards__list");
 const cardTemplate = document.querySelector("#card-template");
 
+let selectedCard, selectedCardId;
+
 // Delete form elements
 const deleteModal = document.querySelector("#delete-modal");
+const deleteForm = deleteModal.querySelector(".modal__container");
 const confirmCardDelete = deleteModal.querySelector(".modal__btn_delete");
 const cancelCardDelete = deleteModal.querySelector(".modal__btn_cancel");
 
@@ -94,8 +98,8 @@ function getCardElement(data) {
   });
 
   cardTrashBtn.addEventListener("click", () => {
-    // cardElement.remove();
-    // cardTrashBtn.remove();
+    selectedCard = cardElement;
+    selectedCardId = data._id;
     openModal(deleteModal);
   });
 
@@ -141,7 +145,6 @@ function handleEditFormSubmit(evt) {
   api
     .editUserInfo({ name: nameInput.value, about: descriptionInput.value })
     .then((data) => {
-      console.log(data);
       return data.value;
     })
     .catch(console.error);
@@ -164,9 +167,8 @@ editForm.addEventListener("submit", handleEditFormSubmit);
 const newPostButton = document.querySelector(".profile__add-btn");
 const newPostModal = document.querySelector("#add-card-modal");
 const newPostForm = document.querySelector("#add-card-form");
-
-const newPostLinkInput = newPostModal.querySelector("#add-card-link-input");
-const newPostCaptionInput = newPostModal.querySelector(
+const newPostLinkInput = newPostForm.querySelector("#add-card-link-input");
+const newPostCaptionInput = newPostForm.querySelector(
   "#add-card-caption-input"
 );
 
@@ -179,12 +181,18 @@ newPostForm.addEventListener("submit", handleNewFormSubmit);
 
 function handleNewFormSubmit(evt) {
   evt.preventDefault();
-  const inputValues = {
-    name: newPostCaptionInput.value,
-    link: newPostLinkInput.value,
-  };
-  const cardEl = getCardElement(inputValues);
-  cardsList.prepend(cardEl);
+  api
+    .addNewCard({
+      name: newPostCaptionInput.value,
+      link: newPostLinkInput.value,
+    })
+    .then((data) => {
+      console.log(data);
+      const cardEl = getCardElement(data);
+      cardsList.prepend(cardEl);
+    })
+    .catch(console.error);
+
   evt.target.reset();
   disableButton(newPostSubmitBtn, settings);
   closeModal(newPostModal);
@@ -208,9 +216,25 @@ function handleAvatarSubmit(evt) {
     .catch(console.error);
 }
 
-confirmCardDelete.addEventListener("click", (evt) => {
+cancelCardDelete.addEventListener("click", (evt) => {
   evt.preventDefault;
   closeModal(deleteModal);
 });
+
+confirmCardDelete.addEventListener("submit", (evt) => {
+  evt.preventDefault;
+  closeModal(deleteModal);
+});
+
+// For Delete Modal functions
+deleteForm.addEventListener("submit", handleDeleteSubmit);
+
+function handleDeleteSubmit(evt) {
+  evt.preventDefault();
+  api
+    .deleteCard(selectedCardId)
+    .then(() => {})
+    .catch(console.error);
+}
 
 enableValidation(settings);

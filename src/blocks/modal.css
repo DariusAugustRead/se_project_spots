@@ -34,6 +34,10 @@
   border-radius: 8px;
 }
 
+.modal__container_delete {
+  max-width: 630px;
+}
+
 .modal__close-btn {
   position: absolute;
   width: 40px;
@@ -74,19 +78,14 @@
 }
 
 .modal__title {
-  max-width: 630px;
-  padding: 4px 0;
-  margin: 0 0 32px;
+  max-width: 590px;
+  margin: 0 auto 32px;
   font-size: 32px;
   font-weight: 500;
 }
 
 .modal__title_delete {
-  max-width: 590px;
-  padding: 4px 0;
-  margin: 0 0 32px;
   font-size: 24px;
-  font-weight: 500;
 }
 
 .modal__label {
@@ -156,11 +155,11 @@
 }
 
 .modal__btn.modal__btn_btns {
-  margin: 0px 149px;
+  margin: 0px auto;
   width: 332px;
   display: flex;
   column-gap: 20px;
-  padding: 0;
+  padding: 0px;
   background: transparent;
 }
 
@@ -220,29 +219,49 @@
 
   .modal__container {
     padding: 12px;
+    min-width: 300px;
   }
 
   .modal__title {
     font-size: 20px;
     font-weight: 500;
-    margin: 0 0 24px;
+    margin: 0 auto 12px;
     padding: 10px 0;
+    min-width: 276px;
+    text-align: center;
+  }
+
+  .modal__title.modal__title_avatar {
+    flex-direction: row;
+    text-align: left;
   }
 
   .modal__label {
-    margin-bottom: 24px;
+    margin-bottom: 12px;
   }
 
   .modal__input {
     font-size: 16px;
   }
 
+  .modal__label_avatar {
+    margin-bottom: 12px;
+  }
+
   .modal__btn {
-    padding: 18px 118px;
+    padding: 18px 32px;
     width: 100%;
     display: flex;
     align-self: center;
     justify-content: center;
+  }
+
+  .modal__btn.modal__btn_btns {
+    flex-direction: column;
+    max-width: 156px;
+    column-gap: 0px;
+    row-gap: 12px;
+    margin: 0 auto;
   }
 
   .modal__content_preview-image {
@@ -261,6 +280,11 @@
   }
 
   .modal__close-btn_preview {
+    right: 0;
+    top: -48px;
+  }
+
+  .modal__close-btn_delete {
     right: 0;
     top: -48px;
   }

@@ -51,6 +51,24 @@ class Api {
       }),
     }).then(this._processServerResponse);
   }
+
+  addNewCard({ name, link }) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify({
+        name,
+        link,
+      }),
+    }).then(this._processServerResponse);
+  }
+
+  deleteCard(id) {
+    return fetch(`${this._baseUrl}/cards/${id}`, {
+      method: "DELETE",
+      headers: this._headers,
+    }).then(this._processServerResponse);
+  }
 }
 
 export default Api;
