@@ -221,10 +221,10 @@ cancelCardDelete.addEventListener("click", (evt) => {
   closeModal(deleteModal);
 });
 
-confirmCardDelete.addEventListener("submit", (evt) => {
-  evt.preventDefault;
-  closeModal(deleteModal);
-});
+// confirmCardDelete.addEventListener("submit", (evt) => {
+//   evt.preventDefault;
+//   closeModal(deleteModal);
+// });
 
 // For Delete Modal functions
 deleteForm.addEventListener("submit", handleDeleteSubmit);
@@ -233,7 +233,10 @@ function handleDeleteSubmit(evt) {
   evt.preventDefault();
   api
     .deleteCard(selectedCardId)
-    .then(() => {})
+    .then(() => {
+      selectedCard.remove();
+      closeModal(deleteModal);
+    })
     .catch(console.error);
 }
 
