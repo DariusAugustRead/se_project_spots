@@ -16,7 +16,11 @@ class Api {
   }
 
   getAppInfo() {
-    return Promise.all([this.getInitialCards(), this.getUserInfo()]);
+    return Promise.all([
+      this.getInitialCards(),
+      this.getUserInfo(),
+      this.getLikeStatus(),
+    ]);
   }
 
   getInitialCards() {
@@ -66,6 +70,20 @@ class Api {
   deleteCard(id) {
     return fetch(`${this._baseUrl}/cards/${id}`, {
       method: "DELETE",
+      headers: this._headers,
+    }).then(this._processServerResponse);
+  }
+
+  changeLikeStatus(id, isLiked) {
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+      method: isLiked ? "DELETE" : "PUT",
+      headers: this._headers,
+    }).then(this._processServerResponse);
+  }
+
+  getLikeStatus(id) {
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+      method: "PATCH",
       headers: this._headers,
     }).then(this._processServerResponse);
   }

@@ -65,7 +65,6 @@ let selectedCard, selectedCardId;
 // Delete form elements
 const deleteModal = document.querySelector("#delete-modal");
 const deleteForm = deleteModal.querySelector(".modal__container");
-const confirmCardDelete = deleteModal.querySelector(".modal__btn_delete");
 const cancelCardDelete = deleteModal.querySelector(".modal__btn_cancel");
 
 //Preview modal elements
@@ -86,11 +85,16 @@ function getCardElement(data) {
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
 
-  cardLikeBtn.addEventListener("click", () => {
-    cardLikeBtn.classList.toggle("card__like-btn_liked");
+  cardLikeBtn.addEventListener("click", (selectedCardId) => {
+    selectedCardId = data._id;
+    const isLiked = cardLikeBtn.classList.contains("card__like-btn_liked");
+    api
+      .changeLikeStatus(selectedCardId, isLiked)
+      .then(cardLikeBtn.classList.toggle("card__like-btn_liked"))
+      .catch(console.error);
   });
 
-  cardImageEl.addEventListener("click", (evt) => {
+  cardImageEl.addEventListener("click", () => {
     openModal(previewModal);
     previewModalImageEl.src = data.link;
     previewModalCaption.textContent = data.name;
@@ -154,7 +158,7 @@ function handleEditFormSubmit(evt) {
   closeModal(editModal);
 }
 
-profileEditButton.addEventListener("click", (evt) => {
+profileEditButton.addEventListener("click", () => {
   nameInput.value = profileName.textContent;
   descriptionInput.value = profileDescription.textContent;
   resetValidation(editForm, [nameInput, descriptionInput], settings);
@@ -173,7 +177,7 @@ const newPostCaptionInput = newPostForm.querySelector(
 );
 
 // For New Post Modal functions
-newPostButton.addEventListener("click", (evt) => {
+newPostButton.addEventListener("click", () => {
   openModal(newPostModal);
 });
 
@@ -199,7 +203,7 @@ function handleNewFormSubmit(evt) {
 }
 
 // For Avatar Modal functions
-avatarModalBtn.addEventListener("click", (evt) => {
+avatarModalBtn.addEventListener("click", () => {
   openModal(avatarModal);
 });
 
@@ -220,11 +224,6 @@ cancelCardDelete.addEventListener("click", (evt) => {
   evt.preventDefault;
   closeModal(deleteModal);
 });
-
-// confirmCardDelete.addEventListener("submit", (evt) => {
-//   evt.preventDefault;
-//   closeModal(deleteModal);
-// });
 
 // For Delete Modal functions
 deleteForm.addEventListener("submit", handleDeleteSubmit);
