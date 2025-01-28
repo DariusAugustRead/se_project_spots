@@ -16,11 +16,7 @@ class Api {
   }
 
   getAppInfo() {
-    return Promise.all([
-      this.getInitialCards(),
-      this.getUserInfo(),
-      this.getLikeStatus(),
-    ]);
+    return Promise.all([this.getInitialCards(), this.getUserInfo()]);
   }
 
   getInitialCards() {
@@ -81,9 +77,9 @@ class Api {
     }).then(this._processServerResponse);
   }
 
-  getLikeStatus(id) {
+  setLikeStatus(id) {
     return fetch(`${this._baseUrl}/cards/${id}/likes`, {
-      method: "PATCH",
+      method: "PUT",
       headers: this._headers,
     }).then(this._processServerResponse);
   }
