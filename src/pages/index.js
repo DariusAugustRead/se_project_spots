@@ -1,5 +1,7 @@
 import "./index.css";
 
+import { setButtonText } from "../utils/helpers.js";
+
 import {
   enableValidation,
   settings,
@@ -85,16 +87,19 @@ function getCardElement(data) {
   cardImageEl.src = data.link;
   cardImageEl.alt = data.name;
 
+  cardLikeBtn.classList.toggle("card__like-btn_liked", data.isLiked);
+
   cardLikeBtn.addEventListener("click", (selectedCardId) => {
     selectedCardId = data._id;
     const isLiked = cardLikeBtn.classList.contains("card__like-btn_liked");
     api
-      .changeLikeStatus(selectedCardId, isLiked)
-      .then(
-        cardLikeBtn.classList.toggle("card__like-btn_liked"),
-        api.setLikeStatus(selectedCardId)
-      )
-      .catch(console.error);
+      .changeLikeStatus({ selectedCardId, isLiked })
+      .then((isLiked) => {
+        cardLikeBtn.classList.toggle("card__like-btn_liked", !isLiked),
+          api.setLikeStatus(selectedCardId);
+      })
+      .catch(console.error)
+      .finally(() => {});
   });
 
   cardImageEl.addEventListener("click", () => {
@@ -149,12 +154,20 @@ function handlePopupClose(evt) {
 // For Edit Profile Modal
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
+
+  const submitBtn = evt.submitter;
+  // submitBtn.textContent = "Saving...";
+  setButtonText(submitBtn, true, "Saving...", "Save");
+
   api
     .editUserInfo({ name: nameInput.value, about: descriptionInput.value })
     .then((data) => {
       return data.value;
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      submitBtn.textContent = "Save";
+    });
 
   profileName.textContent = nameInput.value;
   profileDescription.textContent = descriptionInput.value;
@@ -194,11 +207,11 @@ function handleNewFormSubmit(evt) {
       link: newPostLinkInput.value,
     })
     .then((data) => {
-      console.log(data);
       const cardEl = getCardElement(data);
       cardsList.prepend(cardEl);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {});
 
   evt.target.reset();
   disableButton(newPostSubmitBtn, settings);
@@ -220,7 +233,8 @@ function handleAvatarSubmit(evt) {
       profileAvatar.src = data.avatar;
       closeModal(avatarModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {});
 }
 
 cancelCardDelete.addEventListener("click", (evt) => {

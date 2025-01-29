@@ -25,7 +25,7 @@ Figma
 -Responsive Design planning
 -Visual User interactivity styles
 
-https://dariusaugustread.github.io/se_project_spots/
+https://github.com/DariusAugustRead/se_project_spots
 
 Video Link (Outdated):
 https://drive.google.com/file/d/164WSGMDlg6KlmoiLykxMYy9kcfAdizrU/view?usp=sharing
