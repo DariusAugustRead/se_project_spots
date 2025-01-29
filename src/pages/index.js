@@ -93,9 +93,9 @@ function getCardElement(data) {
     selectedCardId = data._id;
     const isLiked = cardLikeBtn.classList.contains("card__like-btn_liked");
     api
-      .changeLikeStatus({ selectedCardId, isLiked })
+      .changeLikeStatus(selectedCardId, isLiked)
       .then((isLiked) => {
-        cardLikeBtn.classList.toggle("card__like-btn_liked", !isLiked),
+        cardLikeBtn.classList.toggle("card__like-btn_liked"),
           api.setLikeStatus(selectedCardId);
       })
       .catch(console.error)
