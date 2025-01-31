@@ -5,8 +5,8 @@ export function setButtonText(
   loadingText = "Saving..."
 ) {
   if (isLoading) {
-    this.textContent = loadingText;
+    btn.textContent = loadingText;
   } else {
-    this.textContent = defaultText;
+    btn.textContent = defaultText;
   }
 }

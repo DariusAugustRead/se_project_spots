@@ -197,6 +197,9 @@ newPostForm.addEventListener("submit", handleNewFormSubmit);
 
 function handleNewFormSubmit(evt) {
   evt.preventDefault();
+  const submitBtn = evt.submitter;
+  setButtonText(submitBtn, true);
+
   api
     .addNewCard({
       name: newPostCaptionInput.value,
@@ -208,7 +211,7 @@ function handleNewFormSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      setButtonText(submitBtn, true);
+      setButtonText(submitBtn, false);
     });
 
   evt.target.reset();
@@ -225,6 +228,9 @@ avatarForm.addEventListener("submit", handleAvatarSubmit);
 
 function handleAvatarSubmit(evt) {
   evt.preventDefault();
+  const submitBtn = evt.submitter;
+  setButtonText(submitBtn, true);
+
   api
     .editAvatarInfo(avatarInput.value)
     .then((data) => {
@@ -233,7 +239,7 @@ function handleAvatarSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      setButtonText(submitBtn, true);
+      setButtonText(submitBtn, false);
     });
 }
 
@@ -247,6 +253,9 @@ deleteForm.addEventListener("submit", handleDeleteSubmit);
 
 function handleDeleteSubmit(evt) {
   evt.preventDefault();
+  const submitBtn = evt.submitter;
+  setButtonText(submitBtn, true);
+
   api
     .deleteCard(selectedCardId)
     .then(() => {
