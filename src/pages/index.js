@@ -95,11 +95,9 @@ function getCardElement(data) {
     api
       .changeLikeStatus(selectedCardId, isLiked)
       .then((isLiked) => {
-        cardLikeBtn.classList.toggle("card__like-btn_liked"),
-          api.setLikeStatus(selectedCardId);
+        cardLikeBtn.classList.toggle("card__like-btn_liked");
       })
-      .catch(console.error)
-      .finally(() => {});
+      .catch(console.error);
   });
 
   cardImageEl.addEventListener("click", () => {
@@ -154,10 +152,8 @@ function handlePopupClose(evt) {
 // For Edit Profile Modal
 function handleEditFormSubmit(evt) {
   evt.preventDefault();
-
   const submitBtn = evt.submitter;
-  // submitBtn.textContent = "Saving...";
-  setButtonText(submitBtn, true, "Saving...", "Save");
+  setButtonText(submitBtn, true);
 
   api
     .editUserInfo({ name: nameInput.value, about: descriptionInput.value })
@@ -166,7 +162,7 @@ function handleEditFormSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      submitBtn.textContent = "Save";
+      submitBtn.textContent = setButtonText(submitBtn, false);
     });
 
   profileName.textContent = nameInput.value;
@@ -211,7 +207,9 @@ function handleNewFormSubmit(evt) {
       cardsList.prepend(cardEl);
     })
     .catch(console.error)
-    .finally(() => {});
+    .finally(() => {
+      setButtonText(submitBtn, true);
+    });
 
   evt.target.reset();
   disableButton(newPostSubmitBtn, settings);
@@ -234,7 +232,9 @@ function handleAvatarSubmit(evt) {
       closeModal(avatarModal);
     })
     .catch(console.error)
-    .finally(() => {});
+    .finally(() => {
+      setButtonText(submitBtn, true);
+    });
 }
 
 cancelCardDelete.addEventListener("click", (evt) => {
@@ -253,7 +253,15 @@ function handleDeleteSubmit(evt) {
       selectedCard.remove();
       closeModal(deleteModal);
     })
-    .catch(console.error);
+    .catch(console.error)
+    .finally(() => {
+      setButtonText(
+        submitBtn,
+        true,
+        (defaultText = "Delete"),
+        (loadingText = "Deleting...")
+      );
+    });
 }
 
 enableValidation(settings);

@@ -1,5 +1,12 @@
-export function setButtonText(btn, isLoading, loadingText, defaultText) {
+export function setButtonText(
+  btn,
+  isLoading,
+  defaultText = "Save",
+  loadingText = "Saving..."
+) {
   if (isLoading) {
-    console.log(`Setting text to ${loadingText}`);
+    this.textContent = loadingText;
+  } else {
+    this.textContent = defaultText;
   }
 }
