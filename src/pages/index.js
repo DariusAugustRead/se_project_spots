@@ -162,7 +162,7 @@ function handleEditFormSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      submitBtn.textContent = setButtonText(submitBtn, false);
+      setButtonText(submitBtn, false);
     });
 
   profileName.textContent = nameInput.value;
