@@ -21,15 +21,15 @@ const api = new Api({
 
 api
   .getAppInfo()
-  .then(([cards]) => {
+  .then(([cards, userData]) => {
     cards.forEach((card) => {
       const cardElement = getCardElement(card);
       cardsList.prepend(cardElement);
     });
 
-    profileName.textContent = userInfo.name; // set the user data here
-    profileDescription.textContent = userInfo.about;
-    profileAvatar.src = userInfo.avatar;
+    profileName.textContent = userData.name;
+    profileDescription.textContent = userData.about;
+    profileAvatar.src = userData.avatar;
   })
   .catch((err) => {
     console.error(err);
