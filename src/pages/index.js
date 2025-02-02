@@ -24,17 +24,6 @@ api.getAppInfo().then(([cards]) => {
     const cardElement = getCardElement(card);
     cardsList.prepend(cardElement);
   });
-
-  api
-    .getUserInfo()
-    .then((res) => {
-      profileName.textContent = res.name;
-      profileDescription.textContent = res.about;
-      profileAvatar.src = res.avatar;
-    })
-    .catch((err) => {
-      console.error(err);
-    });
 });
 
 // Profile elements
@@ -94,7 +83,7 @@ function getCardElement(data) {
     const isLiked = cardLikeBtn.classList.contains("card__like-btn_liked");
     api
       .changeLikeStatus(selectedCardId, isLiked)
-      .then((isLiked) => {
+      .then(() => {
         cardLikeBtn.classList.toggle("card__like-btn_liked");
       })
       .catch(console.error);
@@ -158,16 +147,15 @@ function handleEditFormSubmit(evt) {
   api
     .editUserInfo({ name: nameInput.value, about: descriptionInput.value })
     .then((data) => {
+      profileName.textContent = nameInput.value;
+      profileDescription.textContent = descriptionInput.value;
+      closeModal(editModal);
       return data.value;
     })
     .catch(console.error)
     .finally(() => {
       setButtonText(submitBtn, false);
     });
-
-  profileName.textContent = nameInput.value;
-  profileDescription.textContent = descriptionInput.value;
-  closeModal(editModal);
 }
 
 profileEditButton.addEventListener("click", () => {
@@ -208,15 +196,14 @@ function handleNewFormSubmit(evt) {
     .then((data) => {
       const cardEl = getCardElement(data);
       cardsList.prepend(cardEl);
+      evt.target.reset();
+      disableButton(newPostSubmitBtn, settings);
+      closeModal(newPostModal);
     })
     .catch(console.error)
     .finally(() => {
-      setButtonText(submitBtn, true);
+      setButtonText(submitBtn, false);
     });
-
-  evt.target.reset();
-  disableButton(newPostSubmitBtn, settings);
-  closeModal(newPostModal);
 }
 
 // For Avatar Modal functions
