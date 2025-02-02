@@ -211,7 +211,7 @@ function handleNewFormSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      setButtonText(submitBtn, false);
+      setButtonText(submitBtn, true);
     });
 
   evt.target.reset();
@@ -239,7 +239,7 @@ function handleAvatarSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      setButtonText(submitBtn, false);
+      setButtonText(submitBtn, true);
     });
 }
 
@@ -264,12 +264,7 @@ function handleDeleteSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      setButtonText(
-        submitBtn,
-        true,
-        (defaultText = "Delete"),
-        (loadingText = "Deleting...")
-      );
+      setButtonText(submitBtn, true, "Delete", "Deleting...");
     });
 }
 
