@@ -254,7 +254,7 @@ deleteForm.addEventListener("submit", handleDeleteSubmit);
 function handleDeleteSubmit(evt) {
   evt.preventDefault();
   const submitBtn = evt.submitter;
-  setButtonText(submitBtn, true);
+  setButtonText(submitBtn, true, "Delete", "Deleting...");
 
   api
     .deleteCard(selectedCardId)
@@ -264,7 +264,7 @@ function handleDeleteSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      setButtonText(submitBtn, true, "Delete", "Deleting...");
+      setButtonText(submitBtn, false, "Delete", "Deleting...");
     });
 }
 
