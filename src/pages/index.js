@@ -19,12 +19,21 @@ const api = new Api({
   },
 });
 
-api.getAppInfo().then(([cards]) => {
-  cards.forEach((card) => {
-    const cardElement = getCardElement(card);
-    cardsList.prepend(cardElement);
+api
+  .getAppInfo()
+  .then(([cards]) => {
+    cards.forEach((card) => {
+      const cardElement = getCardElement(card);
+      cardsList.prepend(cardElement);
+    });
+
+    profileName.textContent = userInfo.name; // set the user data here
+    profileDescription.textContent = userInfo.about;
+    profileAvatar.src = userInfo.avatar;
+  })
+  .catch((err) => {
+    console.error(err);
   });
-});
 
 // Profile elements
 const profileEditButton = document.querySelector(".profile__edit-btn");
@@ -226,7 +235,7 @@ function handleAvatarSubmit(evt) {
     })
     .catch(console.error)
     .finally(() => {
-      setButtonText(submitBtn, true);
+      setButtonText(submitBtn, false);
     });
 }
 
