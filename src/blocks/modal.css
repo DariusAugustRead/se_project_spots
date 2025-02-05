@@ -79,7 +79,7 @@
 
 .modal__title {
   max-width: 590px;
-  margin: 0 auto 32px;
+  margin: 0 auto 32px 0;
   font-size: 32px;
   font-weight: 500;
 }
@@ -225,7 +225,7 @@
   .modal__title {
     font-size: 20px;
     font-weight: 500;
-    margin: 0 auto 12px;
+    margin: 0 auto 12px 0;
     padding: 10px 0;
     min-width: 276px;
     text-align: center;
