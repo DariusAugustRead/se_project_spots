@@ -5,10 +5,49 @@
   border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
 }
 
+.profile__avatar-container {
+  position: relative;
+  display: flex;
+  border-radius: 5%;
+}
+
 .profile__avatar {
   height: 190px;
   width: 190px;
   border-radius: 5%;
+}
+
+.profile__avatar-btn {
+  position: absolute;
+  width: 100%;
+  margin-top: auto;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 12px;
+  justify-content: center;
+  visibility: hidden;
+  border-radius: 5%;
+}
+
+.profile__avatar-btn::after {
+  content: "Edit Avatar";
+  color: white;
+  align-items: flex-end;
+}
+
+.profile__avatar-container:hover .profile__avatar-btn {
+  cursor: url("../images/hand-icon.svg"), pointer;
+  visibility: visible;
+}
+
+.profile__pencil-icon {
+  width: 16px;
+  height: 16px;
+  padding: 0;
+  margin-right: 8px;
+  align-items: flex-end;
 }
 
 .profile__column {
@@ -101,10 +140,38 @@
     margin: 0;
   }
 
+  .profile__avatar-container {
+    border-radius: 10px;
+    height: 80px;
+    width: 80px;
+    margin-bottom: 12px;
+  }
+
   .profile__avatar {
     margin: 0 0 12px;
     height: 80px;
     width: 80px;
+    border-radius: 10px;
+    border: 0;
+  }
+
+  .profile__avatar-btn {
+    border-radius: 6px;
+    visibility: visible;
+    width: 23.34px;
+    height: 23.34px;
+    padding: 0;
+    border: 0;
+    margin: 52px 4.66px 4.66px 52px;
+  }
+
+  .profile__avatar-btn::after {
+    content: "";
+  }
+
+  .profile__pencil-icon {
+    margin: 4px;
+    align-items: center;
   }
 
   .profile__name {
